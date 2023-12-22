@@ -21,3 +21,110 @@ Three Smart Contract DApp Structure:
 2. TerrainTreasury.sol
 3. TerrainCoin.sol(ERC-20 Token)
    
+
+
+Documentation:
+
+1. RailgunTrader.sol
+
+State Variables:
+terrainTreasury: The address of the TerrainTreasury contract, representing the treasury for TerrainCoin.
+ethUsdcTrading: The address of the ETHUSDCTrading contract, representing the trading functionality for the ETH/USDC pair.
+
+Events:
+BuyOrderPlaced: Emitted when a buy order is placed. Includes the buyer's address, order ID, and order details.
+SellOrderPlaced: Emitted when a sell order is placed. Includes the seller's address, order ID, and order details.
+TerrainCoinPurchased: Emitted when TerrainCoin is purchased. Includes the buyer's address, ETH amount spent, and TerrainCoin amount received.
+TerrainCoinSold: Emitted when TerrainCoin is sold. Includes the seller's address, ETH amount received, and TerrainCoin amount sold.
+
+Functions:
+constructor(address _terrainTreasury): Initializes the smart contract with the address of the TerrainTreasury contract.
+Inputs:
+_terrainTreasury: The address of the TerrainTreasury contract.
+placeBuyOrder(uint256 _ethAmount) external: Allows users to place a buy order in the ETH/USDC trading pair.
+Inputs:
+_ethAmount: The amount of ETH the buyer is willing to spend.
+placeSellOrder(uint256 _usdcAmount) external: Allows users to place a sell order in the ETH/USDC trading pair.
+Inputs:
+_usdcAmount: The amount of USDC the seller is willing to receive.
+sellTerrainCoin(uint256 _ethAmount) external: Allows the TerrainTreasury contract to initiate the sale of TerrainCoin in exchange for ETH.
+
+Inputs:
+_ethAmount: The amount of ETH to be sold.
+executeTrades() external: Executes all matched buy and sell orders within the trading window, clearing the order book.
+getOrderBook() external view returns (uint256[] memory, uint256[] memory): Retrieves the current order book.
+Returns:
+uint256[] memory: An array containing buy order prices.
+uint256[] memory: An array containing sell order prices.
+
+These functions provide the necessary functionality for placing buy and sell orders, executing trades, and interacting with the order book. The events facilitate event tracking for user interactions and transactions. The onlyOwner modifier is not explicitly used in this contract, but additional access control can be implemented as needed.
+
+2. TerrainTreasury.sol
+
+State Variables:
+railgunTrader: The address of the RailgunTrader contract. Only this contract is allowed to trigger the selling of TerrainCoin.
+minEthForMint: The minimum amount of ETH required to trigger the minting of TerrainCoin.
+terrainPerEth: The ratio of TerrainCoin to ETH during minting.
+nextMintThreshold: The next ETH threshold required to trigger the minting of TerrainCoin.
+
+Events:
+MintTerrainCoin: Emitted when TerrainCoin is minted. Includes the recipient's address, the ETH amount used for minting, and the corresponding TerrainCoin amount.
+
+Modifiers:
+onlyRailgunTrader: A modifier restricting certain functions to be callable only by the RailgunTrader contract.
+
+Functions:
+constructor(address _railgunTrader): Initializes the smart contract with the address of the RailgunTrader contract.
+mintTerrainCoin(uint256 _ethAmount) external onlyOwner: Allows the owner to mint TerrainCoin based on the provided ETH amount.
+
+Inputs:
+_ethAmount: The amount of ETH to be converted into TerrainCoin.
+sellTerrainCoin(uint256 _ethAmount) external onlyRailgunTrader: Called by the RailgunTrader contract to initiate the sale of TerrainCoin in exchange for ETH.
+Inputs:
+_ethAmount: The amount of ETH to be sold in exchange for TerrainCoin.
+setRailgunTrader(address _railgunTrader) external onlyOwner: Allows the owner to update the address of the RailgunTrader contract.
+Inputs:
+_railgunTrader: The new address of the RailgunTrader contract.
+setMinEthForMint(uint256 _minEthForMint) external onlyOwner: Allows the owner to update the minimum ETH required for minting.
+Inputs:
+_minEthForMint: The new minimum ETH required for minting.
+setTerrainPerEth(uint256 _terrainPerEth) external onlyOwner: Allows the owner to update the Terrain to ETH mint ratio.
+Inputs:
+_terrainPerEth: The new ratio of TerrainCoin to ETH during minting.
+
+These functions provide the necessary functionality for minting TerrainCoin, selling TerrainCoin, and updating configuration parameters. The onlyOwner and onlyRailgunTrader modifiers restrict access to certain functions, ensuring proper control and security.
+
+3. TerrainCoinsol
+
+TerrainRebate Event:
+
+Inputs:
+recipient: The address receiving the TerrainCoin rebate.
+amount: The amount of TerrainCoin rebated.
+
+Explanation:
+The TerrainRebate event is emitted when a rebate in TerrainCoin is provided to a user.
+solidity
+
+event TerrainRebate(address indexed recipient, uint256 amount);
+
+TerrainBack Event:
+
+Inputs:
+payer: The address covering trade fees using TerrainCoin.
+amount: The amount of TerrainCoin used for covering trade fees.
+
+Explanation:
+The TerrainBack event is emitted when TerrainCoin is used to cover trade fees.
+solidity
+
+event TerrainBack(address indexed payer, uint256 amount);
+
+These functions and events provide the core functionality of the TerrainCoin contract, allowing minting, rebates, and covering trade fees with TerrainCoin.
+
+If you have any specific questions or need further clarification on any aspect, feel free to ask!
+
+
+
+
+
