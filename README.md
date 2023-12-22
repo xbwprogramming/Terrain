@@ -1,4 +1,4 @@
-# Terrain
+# TerrainProtocol
 Railgun decentralizes OTC trading to mine new Terrain for the Mode Protocol and Optimistic Mainnet 
 
 Railgun Decentralized Exchange: Frequent OTC Opportunities with Optimistic Rollup
