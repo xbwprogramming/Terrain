@@ -17,7 +17,9 @@ Features:
 
 Three Smart Contract DApp Structure:
 
-1. RailgunTrader.sol
-2. TerrainTreasury.sol
-3. TerrainCoin.sol(ERC-20 Token)
+1. RailgunTrader.sol - The 10-minute Trading Window OTC-Dex with private orderbook for the in-trading window period
+2. TerrainTreasury.sol - The Protocol Treasury that uses OP Fee Sequencer to build up an ETH treasury later used to mint TerrainCoin and and to fill partial buy-orders for ETH to build a USDC Loan Pool
+3. TerrainCoin.sol(ERC-20 Token) - A OP Superchain native-token to be developed later for fee rebates and angel-fund investing through LP listing that can be used by protocols to borrow USDC from the TerrainTreasury USDC Loan Pool for their DeFi Products.
+
+   
    
