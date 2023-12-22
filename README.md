@@ -1,27 +1,23 @@
 # Terrain
 Railgun decentralizes OTC trading to mine new Terrain for the Mode Protocol and Optimistic Mainnet 
-
 Railgun Decentralized Exchange: Frequent OTC Opportunities with Optimistic Rollup
 
-Introduction:
-Welcome to the Terrain, a decentralized OTC-exchange that democratizes the OTC auction process using Optimistic Rollup Technology.  This DEX offers unique 10-minute trading window paired with orderbook clearing and re-shuffling to create an old-school Bid/Ask feel to a decentralized exchange.  10-minute trading windows open and close 24/7 for traders to place orders on the ETH/USDC pair, with a First-In-First-Out(FIFO) matching mechanism and hidden orderbook to help accumulations and profit takes at set prices and liquid quantities regardless of market conditions. 
+Introducing Railgun DEX, a decentralized exchange (DEX) built on the Optimistic Superchain for lightning-fast and cost-effective trades. Railgun DEX operates on 10-minute trading windows, offering users frequent opportunities to place buy and sell orders in a private order book. Orders are executed using a FIFO matching mechanism, providing fair and transparent trade execution.
+
+Railgun DEX leverages the Optimistic Superchain Sequencer fee to build up an ETH treasury, fostering sustainability and growth. The treasury is used to mint TerrainCoin, an Optimistic Superchain-native token, at a 1,000 TerrainCoin to 1 ETH rate. Users can earn TerrainCoin rebates on trade fees and use it to cover future trade fees.
+
+The ecosystem includes:
+
+RailgunTrader: The main trading contract facilitating private order books and 10-minute trade windows.
+TerrainTreasury: Manages the treasury buildup, mints TerrainCoin, and sells ETH to partially filled buy-orders to fund a USDC Loan Pool for TerrainCoin to borrow against
+TerrainCoin: An ERC-20 token minted in TerrainTreasury, offering rebates and fee coverage for Railgun DEX users, and future TerrainCoin/USDC Liquidity Pool Integration for other protocols to stake and borrow USDC against TerrainTreasury
+Railgun DEX empowers users with frequent trading opportunities, transparent order matching, and novel features like TerrainCoin rebates, creating an efficient and sustainable decentralized trading experience. Join Railgun DEX for a faster, fairer, and more rewarding trading journey!
 
 Features:
--24/7 OTC Opportunities in 10-minute trading windows for active and frequent trading opportunities
--Blind Auction with orderbook privacy for current and most recent 10-minute trading window
--FIFO Matching Mechanism that ensures the first buy order that matches a sell order and vice-versa is the trade that goes through 
--Mode/Optimistic Fee Sequencer to build up a Terrain ETH Treasury with unlock levels to mint Terrain OP Superchain Tokens and build a USDC Loan Pool in treasury
--Unique Gas Fee optimizer that ensures matched trades go through regardless of gas fees and utilizes two one-way transfers for each participant for all orders placed during each trade window to avoid MEV on ETH Mainnet once trade-window clears which promotes stable gas fees
--Minting occurs after accumulating 40 ETH in treasury with the first sell for 10 ETH minting 10,000 Supertokens and subsequent buys every 10 ETH mint for 5,000 supertokens and sell 5 ETH on one OTC buy order a trade window 
--Users receive a 20% Supertoken rebate for trade fees above 10 ETH. Rebates contribute to the Supertoken Liquidity pool for traders to angel fund other Mode Protocols. The Treasury becomes an investment tool for future Optimistic Rollup protocols through Terrain/USDC pairs that allow for USDC loans from the Terrain Treasury. 
-
-Three Smart Contract DApp Structure:
-
-1. RailgunTrader.sol
-2. TerrainTreasury.sol
-3. TerrainCoin.sol(ERC-20 Token)
-   
-
+-Private Orderbook OTC-Dex with 24/7 10-minute Trade Close & Clears
+-Gas Optimization feature for all placed trades to execute on two one-way transfers to evade MEV on ETH Mainnet
+-OP/MODE Mainnet Fee Sequencer to develop a treasury for native OP Superchain TerrainCoin mining & USDC Loan Pool Development
+-Collateralize your farmed TerrainCoin with future TerrainCoin/USDC Liquidity Pool Integrations to stake in dApps for them to borrow against USDC Loan Pool
 
 Documentation:
 
